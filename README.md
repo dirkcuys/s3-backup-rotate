@@ -1,7 +1,7 @@
-AWS Backup
-==========
+Active Memory
+=============
 
-Backup your files to Amazon Web Services.
+Backup your files to Amazon Web Services in a way that slowly forgets!
 
 This script copies a file to Amazon S3 and rotates it.
 
