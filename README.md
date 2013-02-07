@@ -13,6 +13,14 @@ Rotation works as follows:
 - After that, keep Z files spaced at least 30 days apart
 
 
-Requirements
+## Requirements
+
+To run the script you will need to install the following packages:
 - boto
 - filechunkio
+
+and export the following environment variables:
+- `export AWS_ACCESS_KEY_ID=yourkeyidhere`
+- `AWS_SECRET_ACCESS_KEY=yoursecretkey`
+
+You can also use one of the other methods supported by boto.
