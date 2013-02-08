@@ -27,5 +27,6 @@ You can also use one of the other methods supported by boto.
 
 ## Usage
 
-`python backup_rotate.py bucket prefix file`.
-See `python backup_rotate.py -h` for more info.
+`python upload_rotate.py bucket prefix file`.
+
+See `python upload_rotate.py -h` for more info.

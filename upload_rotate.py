@@ -11,9 +11,6 @@ daily_backups = 7
 weekly_backups = 4
 monthly_backups = 3
 
-S3_BUCKET = 'bucket_name'
-KEY_PREFIX = 'key_prefix/'
-
 def rotate(key_prefix, key_ext, bucket_name):
     """ Check if we need to remove any files? """
     s3con = boto.connect_s3(None, None)
