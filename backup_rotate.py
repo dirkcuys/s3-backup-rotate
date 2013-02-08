@@ -1,3 +1,4 @@
+import argparse
 import sys
 import os
 import re
@@ -14,6 +15,7 @@ S3_BUCKET = 'bucket_name'
 KEY_PREFIX = 'key_prefix/'
 
 def rotate(key_prefix, key_ext, bucket_name):
+    """ Check if we need to remove any files? """
     s3con = boto.connect_s3(None, None)
     bucket = s3con.get_bucket(bucket_name)
     keys = bucket.list(prefix=key_prefix)
@@ -47,6 +49,9 @@ def rotate(key_prefix, key_ext, bucket_name):
 
 
 def splitext( filename ):
+    """ Return the filename and extension according to the first dot in the filename.
+        This helps date stamping .tar.bz2 or .ext.gz files properly.
+    """
     index = filename.find('.')
     if index == 0:
         index = 1+filename[1:].find('.')
@@ -57,18 +62,22 @@ def splitext( filename ):
 
 
 if __name__ == '__main__':
-    print('Usage: python backup_rotate.py filename')
+    parser = argparse.ArgumentParser(description='Upload a file to Amazon S3 and rotate old backups.')
+    parser.add_argument('bucket', help="Name of the Amazon S3 bucket to save the backup file to.")
+    parser.add_argument('prefix', help="The prefix to add before the filename for the key.")
+    parser.add_argument('file', help="Path to the file to upload.")
+    args = parser.parse_args()
 
-    file_path = sys.argv[1]
+    file_path = args.file
     basename = os.path.basename(file_path)
     key_base, key_ext = list(splitext(basename))
-    key_prefix = "".join([KEY_PREFIX, key_base])
+    key_prefix = "".join([args.prefix, key_base])
     key_datestamp = datetime.utcnow().date().strftime("-%Y-%m-%d")
     key = "".join([key_prefix, key_datestamp, key_ext])
+
     print("Uploading {0} to {1}".format(file_path, key))
+    multipart_upload(args.bucket, None, None, file_path, key, False, 0, None, 0)
 
-    multipart_upload(S3_BUCKET, None, None, file_path, key, False, 0, None, 0)
-
-    print('Rotating file on S3 with key prefix {0}'.format(key_prefix))
-    rotate(key_prefix, key_ext, S3_BUCKET)
+    print('Rotating file on S3 with key prefix {0} and extension {1}'.format(key_prefix, key_ext))
+    rotate(key_prefix, key_ext, args.bucket)
 
