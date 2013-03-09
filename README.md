@@ -1,7 +1,7 @@
 Active Memory
 =============
 
-Backup your files to Amazon Web Services in a way that slowly forgets!
+Backup your files to Amazon Web Services in a way that slowly forgets! I've learned that this way is refered to as the ['Grandfather, father, son'](http://en.wikipedia.org/wiki/Backup_rotation_scheme#Grandfather-father-son) strategy.
 
 This script copies a file to Amazon S3 and rotates it.
 
