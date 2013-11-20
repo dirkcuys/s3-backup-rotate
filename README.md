@@ -13,20 +13,18 @@ Rotation works as follows:
 - After that, keep Z files spaced at least 30 days apart
 
 
-## Requirements
+## Installation
 
-To run the script you will need to install the following packages:
-- boto
-- filechunkio
+`pip install dcu.active-memory`
 
-and export the following environment variables:
+## Usage
+
+Export the following environment variables:
 - `export AWS_ACCESS_KEY_ID=yourkeyidhere`
 - `export AWS_SECRET_ACCESS_KEY=yoursecretkey`
 
 You can also use one of the other methods supported by boto.
 
-## Usage
-
-`python upload_rotate.py bucket prefix file`.
+`upload_rotate.py bucket prefix file`.
 
 See `python upload_rotate.py -h` for more info.
