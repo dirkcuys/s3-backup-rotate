@@ -4,7 +4,7 @@ import argparse
 import os
 import boto
 from datetime import datetime
-from dcu.active_memory.rotate import rotate
+from dcu.active_memory.rotate import rotate, splitext
 from dcu.active_memory.upload import multipart_upload
 
 parser = argparse.ArgumentParser(description='Upload a file to Amazon S3 and rotate old backups.')
