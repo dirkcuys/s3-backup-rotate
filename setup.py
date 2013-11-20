@@ -2,10 +2,10 @@ from distutils.core import setup
 
 setup(
     name='dcu.active-memory',
-    version='0.1.4',
+    version='0.1.5',
     author='Dirk Uys',
     author_email='dirkcuys@gmail.com',
-    packages=['dcu.active_memory'],
+    packages=['dcu', 'dcu.active_memory'],
     scripts=['bin/upload_rotate.py'],
     url='https://github.com/dirkcuys/active-memory',
     license='LICENSE.txt',
