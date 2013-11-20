@@ -2,7 +2,7 @@ from distutils.core import setup
 
 setup(
     name='dcu.active-memory',
-    version='0.1.5',
+    version='0.1.6',
     author='Dirk Uys',
     author_email='dirkcuys@gmail.com',
     packages=['dcu', 'dcu.active_memory'],
@@ -13,5 +13,6 @@ setup(
     long_description=open('README.md').read(),
     install_requires=[
         "boto >= 2.8.0",
+        "filechunkio >= 1.5",
     ],
 )
