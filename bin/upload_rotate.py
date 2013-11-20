@@ -4,7 +4,7 @@ import os
 import re
 import boto
 from datetime import datetime, timedelta
-from s3put import multipart_upload
+from dcu.active-memory.s3put import multipart_upload
 
 backups = []
 daily_backups = 7
