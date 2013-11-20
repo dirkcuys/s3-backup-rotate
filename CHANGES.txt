@@ -1,2 +1,3 @@
-v0.1.0 -- Initial release as a pypy package
-v0.1.1 -- Fix incorrect script name
+v0.1.0 -- Initial release as a pypy package.
+v0.1.1 -- Fix incorrect script name.
+v0.1.2 -- Fix script permissions.
