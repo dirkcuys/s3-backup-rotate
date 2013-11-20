@@ -5,3 +5,4 @@ v0.1.3 -- Don't know - I messed up the versions.
 v0.1.4 -- Fix module name - no hyphen.
 v0.1.5 -- Include dcu module.
 v0.1.6 -- Include missing requirement.
+v0.1.7 -- Include missing import.

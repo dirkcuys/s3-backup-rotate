@@ -2,7 +2,7 @@ from distutils.core import setup
 
 setup(
     name='dcu.active-memory',
-    version='0.1.6',
+    version='0.1.7',
     author='Dirk Uys',
     author_email='dirkcuys@gmail.com',
     packages=['dcu', 'dcu.active_memory'],
