@@ -2,12 +2,15 @@ from datetime import datetime, timedelta
 import os
 import re
 import boto
+import logging
+
+logger = logging.getLogger(__name__)
 
 
-def rotate(key_prefix, key_ext, bucket_name, daily_backups=7, weekly_backups=4, monthly_backups=3):
+def rotate(key_prefix, key_ext, bucket_name, daily_backups=7, weekly_backups=4, aws_key=None, aws_secret=None):
     """ Delete old files we've uploaded to S3 according to grandfather, father, sun strategy """
 
-    s3con = boto.connect_s3(None, None)
+    s3con = boto.connect_s3(aws_key, aws_secret)
     bucket = s3con.get_bucket(bucket_name)
     keys = bucket.list(prefix=key_prefix)
 
@@ -27,14 +30,14 @@ def rotate(key_prefix, key_ext, bucket_name, daily_backups=7, weekly_backups=4, 
 
     if len(backups) > daily_backups+1 and backups[daily_backups] - backups[daily_backups+1] < timedelta(days=7):
         key = bucket.get_key("{0}{1}{2}".format(key_prefix,backups[daily_backups].strftime("-%Y-%m-%d"), key_ext))
-        print("deleting {0}".format(key))
+        logger.debug("deleting {0}".format(key))
         key.delete()
         del backups[daily_backups]
 
     month_offset = daily_backups + weekly_backups
     if len(backups) > month_offset+1 and backups[month_offset] - backups[month_offset+1] < timedelta(days=30):
         key = bucket.get_key("{0}{1}{2}".format(key_prefix,backups[month_offset].strftime("-%Y-%m-%d"), key_ext))
-        print("deleting {0}".format(key))
+        logger.debug("deleting {0}".format(key))
         key.delete()
         del backups[month_offset]
 
