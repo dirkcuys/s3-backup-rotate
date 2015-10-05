@@ -45,15 +45,15 @@ def _upload_part(bucketname, aws_key, aws_secret, multipart_id, part_num,
     """
     Uploads a part with retries.
     """
-    if debug == 1:
-        print "_upload_part(%s, %s, %s)" % (source_path, offset, bytes)
+    #if debug == 1:
+    #    print "_upload_part(%s, %s, %s)" % (source_path, offset, bytes)
 
     def _upload(retries_left=amount_of_retries):
         try:
-            if debug == 1:
-                print 'Start uploading part #%d ...' % part_num
+            #if debug == 1:
+            #    print 'Start uploading part #%d ...' % part_num
             conn = S3Connection(aws_key, aws_secret)
-            conn.debug = debug
+            #conn.debug = debug
             bucket = conn.get_bucket(bucketname)
             for mp in bucket.get_all_multipart_uploads():
                 if mp.id == multipart_id:
@@ -68,9 +68,10 @@ def _upload_part(bucketname, aws_key, aws_secret, multipart_id, part_num,
             else:
                 print 'Failed uploading part #%d' % part_num
                 raise exc
-        else:
-            if debug == 1:
-                print '... Uploaded part #%d' % part_num
+        #else:
+            #if debug == 1:
+            #    print '... Uploaded part #%d' % part_num
+
 
     _upload()
 
@@ -82,7 +83,7 @@ def multipart_upload(bucketname, aws_key, aws_secret, source_path, keyname,
     Parallel multipart upload.
     """
     conn = S3Connection(aws_key, aws_secret)
-    conn.debug = debug
+    #conn.debug = debug
     bucket = conn.get_bucket(bucketname)
 
     if guess_mimetype:

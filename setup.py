@@ -11,7 +11,7 @@ with open(path.join(here, 'README.md'), encoding='utf-8') as f:
 
 setup(
     name='dcu.active-memory',
-    version='0.1.11',
+    version='0.1.12',
     author='Dirk Uys',
     author_email='dirkcuys@gmail.com',
     packages=['dcu', 'dcu.active_memory'],

@@ -20,7 +20,7 @@ def upload_rotate(file_path, s3_bucket, s3_key_prefix, aws_key=None, aws_secret=
     '''
     key = ''.join([s3_key_prefix, os.path.basename(file_path)])
     logger.debug("Uploading {0} to {1}".format(file_path, key))
-    multipart_upload(s3_bucket, aws_key, aws_secret, file_path, key, False, 0, None, 0)
+    multipart_upload(s3_bucket, aws_key, aws_secret, file_path, key, False, False, None, 0)
 
     file_root, file_ext = splitext(os.path.basename(file_path))
     # strip timestamp from file_base
@@ -30,4 +30,4 @@ def upload_rotate(file_path, s3_bucket, s3_key_prefix, aws_key=None, aws_secret=
         raise Exception('File does not contain a timestamp')
     key_prefix = ''.join([s3_key_prefix, match.group('filename')])
     logger.debug('Rotating files on S3 with key prefix {0} and extension {1}'.format(key_prefix, file_ext))
-    rotate(key_prefix, file_ext, s3_bucket)
+    rotate(key_prefix, file_ext, s3_bucket, aws_key=aws_key, aws_secret=aws_secret)
