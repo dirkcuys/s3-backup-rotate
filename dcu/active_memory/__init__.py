@@ -30,3 +30,4 @@ def upload_rotate(file_path, s3_bucket, s3_key_prefix, aws_key=None, aws_secret=
         raise Exception('File does not contain a timestamp')
     key_prefix = ''.join([s3_key_prefix, match.group('filename')])
     logger.debug('Rotating files on S3 with key prefix {0} and extension {1}'.format(key_prefix, file_ext))
+    rotate(key_prefix, file_ext, s3_bucket)
