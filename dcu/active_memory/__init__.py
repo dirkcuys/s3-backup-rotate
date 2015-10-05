@@ -3,7 +3,8 @@ from dcu.active_memory.rotate import splitext
 from dcu.active_memory.upload import multipart_upload
 
 import os.path
-import reimport logging
+import re
+import logging
 
 logger = logging.getLogger(__name__)
 
