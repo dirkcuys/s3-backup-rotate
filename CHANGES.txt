@@ -6,3 +6,5 @@ v0.1.4 -- Fix module name - no hyphen.
 v0.1.5 -- Include dcu module.
 v0.1.6 -- Include missing requirement.
 v0.1.7 -- Include missing import.
+v0.1.8 -- Use python logging, add upload_rotate function, changes to default params for rotate.
+v0.1.9 -- Bump version to fix upload
