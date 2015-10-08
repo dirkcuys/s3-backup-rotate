@@ -11,3 +11,4 @@ v0.1.9 -- Bump version to fix upload
 v0.1.10 -- Fix import error
 v0.1.11 -- Add missing call to rotate
 v0.1.12 -- Add missing credentials and remove debugging from multipart uploading
+v0.2.0 -- Use boto3 for uploading files

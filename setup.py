@@ -11,17 +11,18 @@ with open(path.join(here, 'README.md'), encoding='utf-8') as f:
 
 setup(
     name='dcu.active-memory',
-    version='0.1.12',
+    version='0.2.0',
     author='Dirk Uys',
     author_email='dirkcuys@gmail.com',
     packages=['dcu', 'dcu.active_memory'],
     scripts=['bin/upload_rotate.py'],
     url='https://github.com/dirkcuys/active-memory',
-    license='LICENSE.txt',
-    description='Script rotate backup files on AWS S3 according to a grandfather, father, sun strategy.',
+    license='MIT',
+    description='Script to rotate backup files on AWS S3 according to a grandfather, father, son strategy.',
     long_description=long_description,
     install_requires=[
         "boto >= 2.8.0",
         "filechunkio >= 1.5",
+        "boto3 >= 1.0.0",
     ],
 )

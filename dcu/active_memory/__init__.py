@@ -1,6 +1,6 @@
 from dcu.active_memory.rotate import rotate
 from dcu.active_memory.rotate import splitext
-from dcu.active_memory.upload import multipart_upload
+from dcu.active_memory.upload import upload
 
 import os.path
 import re
@@ -12,7 +12,7 @@ logger = logging.getLogger(__name__)
 def upload_rotate(file_path, s3_bucket, s3_key_prefix, aws_key=None, aws_secret=None):
     '''
     Upload file_path to s3 bucket with prefix
-    Ex. upload('/tmp/file-2015-01-01.tar.bz2', 'backups', 'foo.net/')
+    Ex. upload_rotate('/tmp/file-2015-01-01.tar.bz2', 'backups', 'foo.net/')
     would upload file to bucket backups with key=foo.net/file-2015-01-01.tar.bz2
     and then rotate all files starting with foo.net/file and with extension .tar.bz2
     Timestamps need to be present between the file root and the extension and in the same format as strftime("%Y-%m-%d").
@@ -20,7 +20,7 @@ def upload_rotate(file_path, s3_bucket, s3_key_prefix, aws_key=None, aws_secret=
     '''
     key = ''.join([s3_key_prefix, os.path.basename(file_path)])
     logger.debug("Uploading {0} to {1}".format(file_path, key))
-    multipart_upload(s3_bucket, aws_key, aws_secret, file_path, key, False, False, None, 0)
+    upload(file_path, s3_bucket, key, aws_access_key_id=aws_key, aws_secret_access_key=aws_secret)
 
     file_root, file_ext = splitext(os.path.basename(file_path))
     # strip timestamp from file_base
