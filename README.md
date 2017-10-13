@@ -1,5 +1,5 @@
-Active Memory
-=============
+S3 backup rotate
+================
 
 Backup your files to Amazon Web Services in a way that slowly forgets! I've learned that this way is refered to as the ['Grandfather, father, son'](http://en.wikipedia.org/wiki/Backup_rotation_scheme#Grandfather-father-son) strategy.
 
@@ -15,7 +15,7 @@ Rotation works as follows:
 
 ## Installation
 
-`pip install dcu.active-memory`
+`pip install s3-backup-rotate`
 
 ## Usage
 

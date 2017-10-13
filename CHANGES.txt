@@ -12,3 +12,4 @@ v0.1.10 -- Fix import error
 v0.1.11 -- Add missing call to rotate
 v0.1.12 -- Add missing credentials and remove debugging from multipart uploading
 v0.2.0 -- Use boto3 for uploading files
+v0.3.0 -- Use boto3 for rotating files and rename to s3-backup-rotate
