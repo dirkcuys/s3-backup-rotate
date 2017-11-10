@@ -10,7 +10,11 @@ logger = logging.getLogger(__name__)
 def rotate(key_prefix, key_ext, bucket_name, daily_backups=7, weekly_backups=4, aws_key=None, aws_secret=None):
     """ Delete old files we've uploaded to S3 according to grandfather, father, sun strategy """
 
-    s3 = boto3.resource('s3')
+    session = boto3.Session(
+        aws_access_key_id=aws_key,
+        aws_secret_access_key=aws_secret
+    )
+    s3 = session.resource('s3')
     bucket = s3.Bucket(bucket_name)
     keys = bucket.objects.filter(Prefix=key_prefix)
 

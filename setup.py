@@ -11,7 +11,7 @@ with open(path.join(here, 'README.md'), encoding='utf-8') as f:
 
 setup(
     name='s3-backup-rotate',
-    version='0.3.1',
+    version='0.3.2',
     author='Dirk Uys',
     author_email='dirkcuys@gmail.com',
     packages=['dcu', 'dcu.active_memory'],
