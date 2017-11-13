@@ -20,11 +20,16 @@ Rotation works as follows:
 ## Usage
 
 Export the following environment variables:
-- `export AWS_ACCESS_KEY_ID=yourkeyidhere`
-- `export AWS_SECRET_ACCESS_KEY=yoursecretkey`
+
+```bash
+export AWS_ACCESS_KEY_ID=yourkeyidhere
+export AWS_SECRET_ACCESS_KEY=yoursecretkey
+```
 
 You can also use one of the other methods supported by boto.
 
-`upload_rotate.py bucket prefix file`.
+```bash
+upload_rotate.py bucket prefix file
+````
 
 See `python upload_rotate.py -h` for more info.
